@@ -8,6 +8,7 @@ import { IoHelpCircleOutline } from "react-icons/io5";
 import { VscAccount } from "react-icons/vsc";
 
 
+
 function Navbar() {
   const [ nav, setNav ] = useState(false);
 
@@ -15,6 +16,11 @@ function Navbar() {
     setNav(!nav);
   }
 
+  if (nav) {
+    document.documentElement.style.overflowY = 'hidden';
+  } else {
+    document.documentElement.style.overflowY = 'unset';
+  }
 
   return (
     <div className={nav ? 'flex flex-col h-[100vh] lg:h-auto' : 'flex flex-col'}>
@@ -37,17 +43,18 @@ function Navbar() {
       </div> {/* navbar */}
 
       <div className={ nav ? 'text-white flex-grow bg-gradient-to-b from-[#2c2c2c] to-[#1a1a1a] py-4 lg:hidden' : 'hidden' }>
-        <Link to='/' className='block w-full text-4xl px-8 border-b border-[#333333] py-10'> <h1>HOME</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-        <Link className='block w-full text-4xl px-8 border-b border-[#333333] py-10'> <h1>KITCHEN</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-        <Link className='block w-full text-4xl px-8 border-b border-[#333333] py-10'> <h1>LIVING ROOM</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-        <Link className='block w-full text-4xl px-8 border-b border-[#333333] py-10'> <h1>BEDROOM</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-        <Link className='block w-full text-4xl px-8 border-b border-[#333333] py-10'> <h1>ACCOUNT</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-        <Link to='/contacts' className='block w-full text-4xl px-8 border-b border-[#333333] py-10'> <h1>HELP</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-        <Link to='/about' className='block w-full text-4xl px-8 border-b border-[#333333] py-10'> <h1>ABOUT US</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-      </div>  {/* animated navbar for mobile */}
+        <Link to='/' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>HOME</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+        <Link className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>KITCHEN</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+        <Link className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>LIVING ROOM</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+        <Link className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>BEDROOM</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+        <Link className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>ACCOUNT</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+        <Link to='/contacts' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>HELP</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+        <Link to='/about' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>ABOUT US</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+      </div>  {/* animated navbar for small screens */}
 
     </div>
   )
 }
 
-export default Navbar
+
+export default Navbar;
