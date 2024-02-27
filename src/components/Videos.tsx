@@ -10,9 +10,9 @@ function Videos() {
           <h1 className='text-4xl'>Enjoy Your Hobbies</h1>
         </div>
         <div className='relative w-[80%] pt-[45%] md:w-[40vw] md:pt-[26.7%] my-12'>
-          <Suspense fallback={<p>Loading video...</p>}>
+          {/*<Suspense fallback={<p>Loading video...</p>}>
             <VideoComponent fileName="guitarist.mp4" className='absolute top-0 left-0 border-2 rounded-2xl overflow-hidden border-[#333333]'/>
-          </Suspense>
+            </Suspense> */}
         </div> {/* player container */}
         
       </div>
