@@ -1,44 +1,63 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
-import { HiBars3 } from "react-icons/hi2";
-import { PiShoppingCartSimpleLight } from "react-icons/pi";
-import { IoCloseOutline } from "react-icons/io5";
+import { FaBars } from "react-icons/fa6";
+import { FaXmark } from "react-icons/fa6";
+import { FaUser } from "react-icons/fa6";
+import { FaCartShopping } from "react-icons/fa6";
+import { FaArrowDownShortWide } from "react-icons/fa6";
 import { IoIosArrowForward } from "react-icons/io";
-import { IoHelpCircleOutline } from "react-icons/io5";
-import { VscAccount } from "react-icons/vsc";
 
 
 
-function Navbar() {
-  const [nav, setNav] = useState(false);
+function Navbar({ nav, setNav }) {
+  const [rooms, setRooms] = useState(false);
 
-  const handleNav = () => {
+  function handleNav() {
     setNav(!nav);
+  }
+
+  function handleRooms () {
+    setRooms(!rooms)
   }
 
   return (
     <div className={nav ? 'flex flex-col h-[100vh] lg:h-auto' : 'flex flex-col'}>
 
-      <div className='flex justify-between items-center h-8 my-4'>
-        <button onClick={handleNav} className='lg:hidden'>
-          { !nav ? 
-          <HiBars3 className='text-3xl' /> : 
-          <IoCloseOutline className='text-3xl' /> }
+      <div className='w-full h-8 my-4 flex justify-between items-center'>
+
+        <button onClick={handleNav} className='z-20 lg:hidden ml-8 px-1'>
+          { nav ? 
+          <FaXmark className='text-3xl' /> :
+          <FaBars className='text-3xl' /> }
         </button>
-        <ul className='hidden xl:flex xl:items-center'>
-          <li className='text-lg pr-4 pl-8 border-r'> <Link to='/'> <h1>HOME</h1> </Link> </li>
-          <li className='text-lg px-4 border-r'> <Link to='/rooms/kitchen'> <h1>KITCHEN</h1> </Link> </li>
-          <li className='text-lg px-4 border-r'> <Link to='/rooms/livingRoom'> <h1>LIVING ROOM</h1> </Link> </li>
-          <li className='text-lg px-4 border-r'> <Link to='/rooms/bedroom'> <h1>BEDROOM</h1> </Link> </li>
-          <li className='text-lg px-4'> <Link to='/about'> <h1>ABOUT</h1> </Link> </li>
-        </ul>
-        <div className='text-2xl lg:w-full lg:-z-10 lg:absolute lg:text-center'><h1><Link to='/'>FURNSTORE</Link></h1></div>
-        <div className='flex items-center gap-3 px-4'>
-          <Link to='/contacts' className='hidden lg:block'><IoHelpCircleOutline className='text-3xl' /></Link>
-          <Link className='px-1 hidden lg:block'><VscAccount className='text-2xl' /></Link>
-          <Link className='pr-4'><PiShoppingCartSimpleLight className='text-3xl' /></Link>
-        </div>    
-      </div> {/* navbar */}
+
+        <ul className='hidden lg:flex lg:items-center lg:z-20'>
+          <li className='relative text-md pr-4 pl-8 border-r'>
+            <button onClick={handleRooms} className='text-lg flex gap-2 items-center'> <FaArrowDownShortWide /> ROOMS </button>
+            {rooms &&
+            <div className='w-28 px-1 absolute top-8 border rounded-lg bg-gray-300'>
+              <li> <Link to='/rooms/kitchen'> KITCHEN </Link> </li>
+              <li> <Link to='/rooms/livingRoom'> LIVING ROOM </Link> </li>
+              <li> <Link to='/rooms/bedroom'> BEDROOM </Link> </li> 
+            </div>      
+            }            
+          </li>
+          <li className='text-lg px-4 border-r'> <Link to='/about'> ABOUT </Link> </li>
+          <li className='text-lg px-4'> <Link to='/contacts'> HELP </Link> </li>
+        </ul> {/* Left Navbar */}
+        
+        <div className='w-full absolute z-10 text-center text-2xl'>
+          <Link to='/'>
+            FURNSTORE
+          </Link>
+        </div>
+                
+        <div className='flex items-center gap-3 z-20'>
+          <Link className='px-1'><FaUser className='text-xl' /></Link>
+          <Link className='px-1 mr-8'><FaCartShopping className='text-2xl' /></Link>
+        </div> {/* Right Navbar */}
+
+      </div> {/* navbar */}    
 
       <div className={ nav ? 'text-white flex-grow bg-gradient-to-b from-[#2c2c2c] to-[#1a1a1a] py-4 lg:hidden' : 'hidden' }>
         <Link to='/' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>HOME</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>

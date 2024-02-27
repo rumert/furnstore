@@ -1,18 +1,19 @@
 import React, { Fragment, useEffect, useState } from "react";
-import Navbarr from "./components/Navbarr";
+import Navbar from "./components/Navbar";
 import Hero from "./components/Hero"
 import SearchBar from "./components/SearchBar"
 import Videos from "./components/Videos";
 import Footer from "./components/Footer";
 import About from "./components/About";
 import Rooms from "./components/Rooms";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 import Contacts from "./components/Contacts";
 
 
 function App() {
   const [nav, setNav] = useState(false);
   const [isWindowLarge, setIsWindowLarge] = useState(false)
+  const navigate = useNavigate();
 
   useEffect(() => {
     function handleResize() {
@@ -26,12 +27,20 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    const unlisten = navigate.listen(() => {
+      setNav(false);
+    });
+
+    return () => unlisten();
+  }, [navigate]);
+
   return (
     <Router>
         <Routes>
           <Route exact path="/" element={
             <Fragment>
-              <Navbarr nav={nav} setNav={setNav} />
+              <Navbar nav={nav} setNav={setNav} />
               {!(nav && !isWindowLarge) && (
                 <Fragment>
                   <SearchBar />
@@ -45,14 +54,14 @@ function App() {
           </Route>
           <Route exact path="/about" element={
             <Fragment>
-              <Navbarr nav={nav} setNav={setNav} />
+              <Navbar nav={nav} setNav={setNav} />
               {!(nav && !isWindowLarge) && <About />}
             </Fragment>
             }> 
           </Route>
           <Route exact path="/contacts" element={
             <Fragment>
-              <Navbarr nav={nav} setNav={setNav} />
+              <Navbar nav={nav} setNav={setNav} />
               {!(nav && !isWindowLarge) && (
                 <Fragment>
                   <SearchBar />
@@ -65,7 +74,7 @@ function App() {
           </Route>
           <Route exact path="/rooms/:room" element={
             <Fragment>
-              <Navbarr nav={nav} setNav={setNav} />
+              <Navbar nav={nav} setNav={setNav} />
               {!(nav && !isWindowLarge) && (
                 <Fragment>
                   <SearchBar />
