@@ -1,5 +1,4 @@
 import React from 'react'
-import tableVideo from "../assets/tableVideo.mp4"
 
 function Hero() {
   return (
@@ -8,7 +7,7 @@ function Hero() {
       <div className='hidden sm:block sm:absolute left-0 w-full h-[98vh] bg-black/40'></div> {/* make texts easy to read */}
       
       <div className='hidden sm:block sm:absolute -z-10 h-[100vh] w-full'>
-        <video src={tableVideo} autoPlay loop muted className='w-full h-full object-cover' />
+        <video src={'/'} autoPlay loop muted className='w-full h-full object-cover' />
       </div> {/* bg video for desktop */}
       
       <div className='py-[15%] flex flex-col items-center relative sm:gap-2'>

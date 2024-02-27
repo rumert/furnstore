@@ -1,6 +1,6 @@
 import React from 'react'
 import { IoLogoReact } from "react-icons/io5";
-import { Link } from 'react-router-dom';
+import  Link  from 'next/link';
 
 
 function Footer() {
@@ -23,10 +23,10 @@ function Footer() {
                     <h1 className='text-xl md:text-2xl'>MENU</h1>
                     <div className='h-2 w-14 border-b border-b-[#1a1a1a]'></div>
                 </li>
-                <li><p><Link to='/about'>About Us</Link></p></li>
-                <li><p><Link to='/contacts'>Contacts</Link></p></li>
-                <li><p><Link>Terms & Condition</Link></p></li>
-                <li><p><Link>Privacy Policy</Link></p></li>
+                <li><Link href='/about'>About Us</Link></li>
+                <li><Link href='/contacts'>Contacts</Link></li>
+                <li><Link href='/'>Terms & Condition</Link></li>
+                <li><Link href='/'>Privacy Policy</Link></li>
             </ul>
 
             <ul className='w-[40%] flex flex-col gap-4 px-12 md:w-[50%] md:border-r md:border-r-[#333333]'>

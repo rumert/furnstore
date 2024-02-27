@@ -1,8 +1,5 @@
-import React from 'react'
-import ReactPlayer from 'react-player'
-import video from '../assets/guitarist.mp4'
-import sleeping from '../assets/sleeping.mp4'
-
+import React, { Suspense } from 'react'
+import { VideoComponent } from './Video'
 
 function Videos() {
   return (
@@ -13,14 +10,11 @@ function Videos() {
           <h1 className='text-4xl'>Enjoy Your Hobbies</h1>
         </div>
         <div className='relative w-[80%] pt-[45%] md:w-[40vw] md:pt-[26.7%] my-12'>
-          <ReactPlayer
-          className='absolute top-0 left-0 border-2 rounded-2xl overflow-hidden border-[#333333]' 
-          url={video}
-          controls={true}
-          width='100%' 
-          height='100%' 
-          />
+          <Suspense fallback={<p>Loading video...</p>}>
+            <VideoComponent fileName="guitarist.mp4" className='absolute top-0 left-0 border-2 rounded-2xl overflow-hidden border-[#333333]'/>
+          </Suspense>
         </div> {/* player container */}
+        
       </div>
       
       <div className='w-[30%] md:w-[60%] mb-12 border border-[#333333]'></div>
@@ -31,13 +25,13 @@ function Videos() {
           <h1 className='text-4xl'>Better Comfort</h1>
         </div>
         <div className='relative w-[80%] pt-[44.5%] md:w-[40vw] md:pt-[26.4%] my-12'>
-          <ReactPlayer
+          {/* <ReactPlayer
           className='absolute top-0 left-0 border-2 rounded-2xl overflow-hidden border-[#333333]' 
-          url={sleeping}
+          url={'/sleeping.mp4'}
           controls={true}
           width='100%' 
           height='100%' 
-          />
+          /> */}
         </div> {/* player container */}
       </div>
       

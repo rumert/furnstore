@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import { FaUser } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
@@ -6,14 +7,10 @@ function Contacts() {
 
     const [faqIsActive, setFaqIsActive] = useState([false, false, false, false]);
 
-    const handleFaqIsActive = (button) => {
+    const handleFaqIsActive = (button: number) => {
         let newFaqIsActive = [false, false, false, false];
-        if (faqIsActive[button]) {
-            setFaqIsActive(newFaqIsActive);
-        } else {
-            newFaqIsActive[button] = true;
-            setFaqIsActive(newFaqIsActive);
-        }
+        newFaqIsActive[button] = !faqIsActive[button] 
+        setFaqIsActive(newFaqIsActive)
     }
 
   return (
@@ -24,9 +21,9 @@ function Contacts() {
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17045966.50514465!2d-103.58402475513248!3d42.47656853425509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b506293191ad%3A0xa35171da05d52d5f!2sGoogle!5e0!3m2!1sen!2str!4v1702811224315!5m2!1sen!2str" 
                         width="100%" 
                         height="100%" 
-                        allowfullscreen="" 
+                        allowFullScreen={false}
                         loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
+                        referrerPolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
             </div>
@@ -56,7 +53,7 @@ function Contacts() {
                     <h1 className='text-2xl md:text-4xl text-center mb-[8%]'>EMAIL US</h1>
                     <div className='h-[20%] relative'><FaUser className='absolute top-[50%] translate-y-[-50%] left-3 text-gray-500 texl-lg sm:text-xl ' /><input type="text" placeholder='Name' className='texl-lg sm:text-xl text-black w-full h-full pl-8 sm:pl-10 rounded-2xl' /></div>
                     <div className='h-[20%] relative'><MdEmail className='absolute top-[50%] translate-y-[-50%] left-3 text-gray-500 text-lg sm:text-xl' /><input type="email" placeholder='Email' className='texl-lg sm:text-xl text-black w-full h-full pl-8 sm:pl-10 rounded-2xl' /></div>
-                    <textarea placeholder='Message' className='texl-lg sm:text-xl md:text-2xl text-black rounded-xl md:rounded-2xl mt-1 md:mt-2 pl-2 md:pl-4 pt-1 md:pt-2' rows="7"></textarea>
+                    <textarea placeholder='Message' className='texl-lg sm:text-xl md:text-2xl text-black rounded-xl md:rounded-2xl mt-1 md:mt-2 pl-2 md:pl-4 pt-1 md:pt-2' rows={7}></textarea>
                 </div>
             </div>
             <div className='before:block before:pt-[100%] box-border m-7 rounded-3xl md:rounded-[4rem] overflow-hidden xl:m-5 w-[calc(50%_-_56px)] xl:w-[calc(33%_-_40px)] 2xl:w-[calc(25%_-_40px)] relative border'>
