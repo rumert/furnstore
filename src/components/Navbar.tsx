@@ -22,9 +22,15 @@ function Navbar() {
   }
 
   return (
-    <div className={nav ? 'flex flex-col h-[100vh] lg:h-auto' : ''}>
+    <div>
 
-      <div className='w-full h-8 my-4 flex justify-between items-center'>
+      <div className='w-full absolute z-10 text-center text-2xl'>
+        <Link href='/'>
+          FURNSTORE
+        </Link>
+      </div>
+
+      <div className='w-full max-w-[1024px] mx-auto h-8 my-4 flex justify-between items-center'>
 
         <button onClick={handleNav} className='z-20 lg:hidden ml-8 px-1'>
           { nav ? 
@@ -46,30 +52,29 @@ function Navbar() {
           <li className='text-lg px-4 border-r'> <Link href='/about'> ABOUT </Link> </li>
           <li className='text-lg px-4'> <Link href='/contacts'> HELP </Link> </li>
         </ul> {/* Left Navbar */}
-        
-        <div className='w-full absolute z-10 text-center text-2xl'>
-          <Link href='/'>
-            FURNSTORE
-          </Link>
-        </div>
                 
         <div className='flex items-center gap-3 z-20'>
           <Link href='' className='px-1'><FaUser className='text-xl' /></Link>
           <Link href='' className='px-1 mr-8'><FaCartShopping className='text-2xl' /></Link>
         </div> {/* Right Navbar */}
 
-      </div> {/* navbar */}    
+      </div> {/* navbar */}  
 
-      <div className={ nav ? 'text-white flex-grow bg-gradient-to-b from-[#2c2c2c] to-[#1a1a1a] py-4 lg:hidden' : 'hidden' }>
-        <Link href='/' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>HOME</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-        <Link href='/rooms/kitchen' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>KITCHEN</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-        <Link href='/rooms/livingRoom' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>LIVING ROOM</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-        <Link href='/rooms/bedroom' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>BEDROOM</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-        <Link href='' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>ACCOUNT</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-        <Link href='/contacts' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>HELP</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-        <Link href='/about' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>ABOUT US</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
-      </div>  {/* animated navbar for small screens */}
+      {nav && 
+      
+      <div className='flex flex-col h-[100vh] lg:h-auto' >
+        <div className='text-white flex-grow bg-gradient-to-b from-[#2c2c2c] to-[#1a1a1a] py-4 lg:hidden'>
+          <Link href='/' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>HOME</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+          <Link href='/rooms/kitchen' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>KITCHEN</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+          <Link href='/rooms/livingRoom' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>LIVING ROOM</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+          <Link href='/rooms/bedroom' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>BEDROOM</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+          <Link href='' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>ACCOUNT</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+          <Link href='/contacts' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>HELP</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+          <Link href='/about' className='block w-full text-2xl sm:text-3xl md:text-4xl px-8 border-b border-[#333333] py-7 lg:py-10'> <h1>ABOUT US</h1> <IoIosArrowForward className='inline float-right relative -top-9' /> </Link>
+        </div>  
+      </div>  /* animated navbar for small screens */
 
+      }
     </div>
   )
 }

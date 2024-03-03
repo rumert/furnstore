@@ -41,7 +41,7 @@ export default function RootLayout({
         <title>Title</title>
         <meta name='description' content='Description' />
       </head>
-      <body className={andada_pro.className}>
+      <body className={`${andada_pro.className} bg-base-color-1 text-white`}>
         <Navbar />
         {!(nav && !isWindowLarge) && children}
       </body>

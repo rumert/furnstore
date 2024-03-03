@@ -1,28 +1,31 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 function Hero() {
   return (
-    <div className='flex items-center flex-col gap-16 w-full h-[100vh] sm:h-screen py-6 text-white relative bg-gradient-to-b from-[#352e2e] to-[#1a1818] sm:bg-none'>
+    <div className='relative w-full mt-6 mask bg-homepage_background bg-cover bg-bottom bg-no-repeat h-[45vh] md:h-[70vh] lg:h-[80vh] xl:h-[100vh] text-md md:text-2xl'>
+      <div className='h-fit w-full flex'>
+        <div className='w-[40%]'></div>
+        <div className='flex flex-col items-center w-[30%] h-fit mt-2 md:mt-8'>
+          <h1>CHAIR NAME</h1>
+          <h1>12 $</h1>
+          <Link href='/' className='h-6 md:h-8 mt-2 md:mt-4 w-[70%] sm:w-[60%] bg-action-color rounded-full'></Link>
+        </div>
+      </div>
       
-      <div className='hidden sm:block sm:absolute left-0 w-full h-[98vh] bg-black/40'></div> {/* make texts easy to read */}
-      
-      <div className='hidden sm:block sm:absolute -z-10 h-[100vh] w-full'>
-        <video src={'/'} autoPlay loop muted className='w-full h-full object-cover' />
-      </div> {/* bg video for desktop */}
-      
-      <div className='py-[15%] flex flex-col items-center relative sm:gap-2'>
-        <h1 className='text-[40px] sm:text-7xl'>Make Your House</h1>
-        <h1 className='text-[50px] sm:text-8xl'>Peaceful</h1> 
-      </div> {/* text container */}
-      
-      <div className='w-80 sm:w-[90%] text-xl sm:text-3xl flex'>
-        <div className='hidden md:block border-l-[6px] border-l-gray-600 pr-2'></div>
-        <h1>Lorem Ipsum is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</h1>
-      </div> {/* description and line container */}
-    
+      <div className='absolute bottom-6 right-12 w-[30%] aspect-square'>
+        <Image
+          src="/blue-chair.png"
+          alt='blue chair'
+          width={1800}
+          height={1800}
+        />
+      </div>
     </div>
   )
 }
 
-export default Hero
+export default Hero          
 
+  

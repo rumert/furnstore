@@ -5,7 +5,7 @@ import  Link  from 'next/link';
 
 function Footer() {
   return (
-    <div className='grid h-screen md:h-auto pt-12 pb-32 md:pb-48 bg-gradient-to-b md:bg-gradient-to-r from-[#2c2c2c] to-[#1a1a1a] text-white md:text-xl md:grid-cols-4 md:max-h-[75vh]'>
+    <div className='hidden h-screen md:h-auto pt-12 pb-32 md:pb-48 bg-gradient-to-b md:bg-gradient-to-r from-[#2c2c2c] to-[#1a1a1a] text-white md:text-xl md:grid-cols-4 md:max-h-[75vh]'>
 
         <ul className='flex gap-4 px-12 items-center md:border-r-[#333333] md:border-r md:items-stretch md:flex-col'>
             <li className='text-6xl w-16'><IoLogoReact /></li>
