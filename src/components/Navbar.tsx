@@ -30,7 +30,7 @@ function Navbar() {
         </Link>
       </div>
 
-      <div className='w-full max-w-[1024px] mx-auto h-8 my-4 flex justify-between items-center'>
+      <div className='w-full max-w-[1024px] mx-auto h-8 mt-2 mb-4 md:mb-8 flex justify-between items-center'>
 
         <button onClick={handleNav} className='z-20 lg:hidden ml-8 px-1'>
           { nav ? 
@@ -39,7 +39,7 @@ function Navbar() {
         </button>
 
         <ul className='hidden lg:flex lg:items-center lg:z-20'>
-          <li className='relative text-md pr-4 pl-8 border-r'>
+          <li className='relative text-md pr-4 pl-8 xl:pl-4 border-r'>
             <button onClick={handleRooms} className='text-lg flex gap-2 items-center'> <FaArrowDownShortWide /> ROOMS </button>
             {rooms &&
             <div className='w-28 px-1 absolute top-8 border rounded-lg bg-gray-300'>
