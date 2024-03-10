@@ -2,6 +2,7 @@ import SearchBar from '@/components/SearchBar'
 import Slider from '@/components/Slider'
 import Footer from '@/components/Footer'
 import Categories from '@/components/Categories';
+import Reviews from '@/components/Reviews';
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <SearchBar />
       <Slider />
       <Categories />
+      <Reviews />
       <Footer />
     </div>
   );
