@@ -20,11 +20,7 @@
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--base-color-1);
-}
-
-::-webkit-scrollbar-thumb:hover + ::-webkit-scrollbar {
-    background: var(--base-color-2);
+    background: rgba(107, 94, 80, 0.8);
 }
 
 .mask {

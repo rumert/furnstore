@@ -22,6 +22,7 @@ export default function Slider() {
           height={1800}
         />
       </div>
+      
 
       <div className='absolute bottom-1 xl:bottom-3 left-[33%]'>
         <a href='#' className='h-4 md:h-6 xl:h-7 aspect-square mr-1 inline-block'>
@@ -33,7 +34,7 @@ export default function Slider() {
         <a href='#' className='h-4 md:h-6 xl:h-7 aspect-square mr-1 inline-block'>
           <div className='h-full w-full bg-action-color flex items-center justify-center rounded-full text-lg md:text-2xl xl:text-3xl'>3</div>
         </a>
-      </div>   
+      </div>
     </div>
   )
 }          

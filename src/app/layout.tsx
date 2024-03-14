@@ -3,8 +3,8 @@ import { Andada_Pro } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { useEffect, useState } from "react";
+import { useStore } from '../stores/globalValues'
 import { usePathname } from "next/navigation";
-import { useStore } from '../stores/store'
 
 const andada_pro = Andada_Pro({ subsets: ["latin"] });
 
@@ -14,10 +14,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-  const pathname = usePathname();
   const nav = useStore((state) => state.nav)
   const setNav = useStore((state: any) => state.updateNav)
   const [isWindowLarge, setIsWindowLarge] = useState(false)
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setNav(false)
+  }, [pathname])
 
   useEffect(() => {
     function handleResize() {
@@ -31,10 +35,6 @@ export default function RootLayout({
     };
   }, []);
 
-  useEffect(() => {
-    setNav(false)
-  }, [pathname])
-
   return (
     <html lang="en">
       <head>
@@ -42,7 +42,7 @@ export default function RootLayout({
         <meta name='description' content='Description' />
       </head>
       <body className={`${andada_pro.className} bg-base-color-1 text-white text-md sm:text-2xl lg:text-3xl xl:text-4xl`}>
-        <Navbar />
+        <Navbar isNavbarAnimated={(nav && !isWindowLarge)}/>
         {!(nav && !isWindowLarge) && children}
       </body>
     </html>
