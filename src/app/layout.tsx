@@ -1,7 +1,7 @@
 "use client"
 import { Andada_Pro } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/common/Navbar";
 import { useEffect, useState } from "react";
 import { useStore } from '../stores/globalValues'
 import { usePathname } from "next/navigation";

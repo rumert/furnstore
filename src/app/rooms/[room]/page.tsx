@@ -1,10 +1,10 @@
-import Footer from '@/components/Footer'
-import Rooms from '@/components/Rooms'
+import Footer from '@/components/common/Footer'
+import Rooms from '@/components/product/Rooms'
 import React from 'react'
 import Image from 'next/image'
 
 export default function room({ params }: any) {
-
+  
   return (
     <div className=''>
       <div className='w-full h-[50vh] relative mb-[10vh]'>

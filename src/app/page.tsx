@@ -1,8 +1,7 @@
-import SearchBar from '@/components/SearchBar'
-import Slider from '@/components/Slider'
-import Footer from '@/components/Footer'
-import Categories from '@/components/Categories';
-import Reviews from '@/components/Reviews';
+import Slider from '@/components/homePage/Slider'
+import Footer from '@/components/common/Footer'
+import Categories from '@/components/homePage/Categories';
+import Reviews from '@/components/homePage/Reviews';
 
 export default function Home() {
   return (

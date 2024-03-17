@@ -3,14 +3,14 @@ import ProductList from './ProductList';
 
 export default async function Rooms({ room }: any) {
 
-  const products = await GetProducts(room)
+  const { data: products } = await GetProducts(room)
 
   return (
     <div className='py-8 grid grid-cols-5'>
       <div></div> {/* filtering coming soon */}
       <div className='col-span-4'>
         <div className='h-16'></div>
-        <ProductList room={room} products={products} />
+        <ProductList products={products} />
       </div>
     </div>
   )

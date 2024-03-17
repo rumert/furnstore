@@ -1,5 +1,5 @@
-import Footer from '@/components/Footer'
-import SearchBar from '@/components/SearchBar'
+import Footer from '@/components/common/Footer'
+import SearchBar from '@/components/common/SearchBar'
 import Contacts from '@/components/Contacts'
 import React from 'react'
 
