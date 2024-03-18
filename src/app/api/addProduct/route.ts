@@ -1,6 +1,6 @@
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { db, storage } from "../../../../lib/firebase/firebase";
-import { addDoc, collection, serverTimestamp } from "firebase/firestore"; 
+import { addDoc, collection, serverTimestamp, updateDoc } from "firebase/firestore"; 
 
 export async function POST(req: Request) {
     try {
@@ -13,20 +13,22 @@ export async function POST(req: Request) {
               room = data.get('room'),
               file = data.get('file');
 
-        const imageRef = ref(storage, `images/${room}/${name}`)
-        await uploadBytes(imageRef, file)
-        const url = await getDownloadURL(imageRef)
-
-        await addDoc(collection(db, "products", "4381VtlCGuvDIqoGZHMc", room), {
-            name: name,
-            price: price,
-            width: width,
-            height: height,
-            room: room,
-            url: url,
+        const docRef = await addDoc(collection(db, "products", "4381VtlCGuvDIqoGZHMc", room), {
+            name,
+            price,
+            width,
+            height,
+            room,
             createdAt: serverTimestamp()
         })
 
+        const id = docRef.id
+        const imageRef = ref(storage, `images/${room}/${id}`)
+        await uploadBytes(imageRef, file)
+        const url = await getDownloadURL(imageRef)
+
+        await updateDoc(docRef, { id, url })
+        
         return Response.json('OK')
     } catch (err: any) {
         console.error('firebase error:', err);
