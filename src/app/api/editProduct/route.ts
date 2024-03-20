@@ -1,12 +1,10 @@
-import { deleteObject, getBlob, getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { deleteObject, getBytes, getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { db, storage } from "../../../../lib/firebase/firebase";
 import { deleteDoc, doc, getDoc, setDoc, updateDoc } from "firebase/firestore"; 
 
 export async function POST(req: Request) {
     try {
         const data: any = await req.formData()
-
-        console.log(data)
 
         const name = data.get('name'),
               price = data.get('price'),
@@ -31,10 +29,11 @@ export async function POST(req: Request) {
         } else if (newRoom) {
             const oldImageRef = ref(storage, `images/${room}/${id}`)
             const newImageRef = ref(storage, `images/${newRoom}/${id}`)
-            const blob = await getBlob(oldImageRef)
-            await uploadBytes(newImageRef, blob)
+            const oldUrl = await getDownloadURL(oldImageRef)
+            const res = await fetch(oldUrl)
+            const blob = await res.blob()
+            await uploadBytes(newImageRef, blob)      
             await deleteObject(oldImageRef)
-
             const newUrl = await getDownloadURL(newImageRef)
             const oldDocSnap = await getDoc(docRef)
             const newDocRef = doc(db, "products", "4381VtlCGuvDIqoGZHMc", newRoom, id)

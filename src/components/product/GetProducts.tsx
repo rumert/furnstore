@@ -14,24 +14,5 @@ export default async function GetProducts( room: any ) {
     return JSON.parse(JSON.stringify( { data } ))
   } catch (error: any) {
       console.log(error)
-      switch (error.code) {
-        case 'storage/object-not-found':
-          console.log("File doesn't exist") 
-          break;
-        case 'storage/unauthorized':
-          console.log("User doesn't have permission to access the object")
-          break;
-        case 'storage/canceled':
-          console.log("User canceled the upload") 
-          break;
-  
-        // ...
-  
-        case 'storage/unknown':
-          console.log("Unknown error occurred, inspect the server response") 
-          break;
-      }
-    }
-  
-  
+    } 
 }

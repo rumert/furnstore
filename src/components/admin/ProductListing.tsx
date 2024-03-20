@@ -85,7 +85,7 @@ export default function ProductListing (  { room, products } : any) {
                         name='width'
                         value={formFields.width}
                         onChange={e => setFormFields( (prevData: any) => ({ ...prevData, width: e.target.value }) )}
-                        placeholder='Width'
+                        placeholder={'W: '+ product.width}
                         required
                         /> 
 
@@ -95,7 +95,7 @@ export default function ProductListing (  { room, products } : any) {
                         name='height'
                         value={formFields.height}
                         onChange={e => setFormFields( (prevData: any) => ({ ...prevData, height: e.target.value }) )}
-                        placeholder='Height'
+                        placeholder={'H: '+ product.height}
                         required
                         /> 
 
