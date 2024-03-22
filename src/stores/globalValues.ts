@@ -2,7 +2,8 @@ import { create } from 'zustand'
 
 interface state {
     nav: boolean,
-    navbarRooms: boolean
+    navbarRooms: boolean,
+    isSearchBarActive: boolean
 }
 
 export const useStore = create<state>((set) => ({
@@ -10,4 +11,6 @@ export const useStore = create<state>((set) => ({
   updateNav: (newNav: boolean) => set({ nav: newNav }),
   navbarRooms: false,
   updateNavbarRooms: (newNavbarRooms: boolean) => set({ navbarRooms: newNavbarRooms }),
+  isSearchBarActive: false,
+  updateIsSearchBarActive: (newIsSearchBarActive: boolean) => set({ isSearchBarActive: newIsSearchBarActive }),
 }))

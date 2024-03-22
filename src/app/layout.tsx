@@ -16,14 +16,15 @@ export default function RootLayout({
 
   const nav = useStore((state) => state.nav)
   const setNav = useStore((state: any) => state.updateNav)
-  const navbarRooms = useStore((state) => state.navbarRooms)
   const setNavbarRooms = useStore((state: any) => state.updateNavbarRooms)
+  const setIsSearchBarActive = useStore((state: any) => state.updateIsSearchBarActive)
   const [isWindowLarge, setIsWindowLarge] = useState(false)
   const pathname = usePathname();
 
   useEffect(() => {
     setNav(false)
     setNavbarRooms(false)
+    setIsSearchBarActive(false)
   }, [pathname])
 
   useEffect(() => {
@@ -45,7 +46,7 @@ export default function RootLayout({
         <meta name='description' content='Description' />
       </head>
       <body className={`${andada_pro.className} bg-base-color-1 text-white text-md sm:text-2xl lg:text-3xl xl:text-4xl`}>
-        <Navbar isNavbarAnimated={(nav && !isWindowLarge)}/>
+        <Navbar isNavbarAnimated={(nav && !isWindowLarge)} />
         {!(nav && !isWindowLarge) && children}
       </body>
     </html>

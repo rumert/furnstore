@@ -9,12 +9,13 @@ import { FaMagnifyingGlass } from "react-icons/fa6";
 import { useStore } from '@/stores/globalValues';
 import SearchBar from './SearchBar';
 
-function Navbar({isNavbarAnimated}: any) {
+function Navbar({ isNavbarAnimated }: any) {
   const navbarRooms = useStore((state) => state.navbarRooms)
   const setNavbarRooms = useStore((state: any) => state.updateNavbarRooms)
+  const isSearchBarActive = useStore((state) => state.isSearchBarActive)
+  const setIsSearchBarActive = useStore((state: any) => state.updateIsSearchBarActive)
   const nav = useStore((state) => state.nav)
   const setNav = useStore((state: any) => state.updateNav)
-  const [isSearchBarActive, setIsSearchBarActive] = useState(false)
 
   function handleNav() {
     setNav(!nav);

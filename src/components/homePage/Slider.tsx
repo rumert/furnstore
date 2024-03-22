@@ -22,7 +22,6 @@ export default function Slider() {
           height={1800}
         />
       </div>
-      
 
       <div className='absolute bottom-1 xl:bottom-3 left-[33%]'>
         <a href='#' className='h-4 md:h-6 xl:h-7 aspect-square mr-1 inline-block'>
