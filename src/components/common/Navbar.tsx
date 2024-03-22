@@ -10,18 +10,18 @@ import { useStore } from '@/stores/globalValues';
 import SearchBar from './SearchBar';
 
 function Navbar({isNavbarAnimated}: any) {
-  const [rooms, setRooms] = useState(false);
+  const navbarRooms = useStore((state) => state.navbarRooms)
+  const setNavbarRooms = useStore((state: any) => state.updateNavbarRooms)
   const nav = useStore((state) => state.nav)
-  const isSearchBarActive = useStore((state) => state.isSearchBarActive)
   const setNav = useStore((state: any) => state.updateNav)
-  const setIsSearchBarActive = useStore((state: any) => state.updateIsSearchBarActive)
+  const [isSearchBarActive, setIsSearchBarActive] = useState(false)
 
   function handleNav() {
     setNav(!nav);
   }
 
-  function handleRooms () {
-    setRooms(!rooms)
+  function handleNavbarRooms () {
+    setNavbarRooms(!navbarRooms)
   }
 
   function handleSearchBar () {
@@ -64,13 +64,13 @@ function Navbar({isNavbarAnimated}: any) {
           </button>
 
           <ul className='hidden lg:flex lg:items-center lg:z-20'>
-            <li className='relative text-md pr-4 pl-8 xl:pl-4 border-r'>
-              <button onClick={handleRooms} className='text-lg flex gap-2 items-center'> <FaArrowDownShortWide /> ROOMS </button>
-              {rooms &&
-              <div className='w-fit px-1 absolute top-8 border rounded-lg'>
-                <li> <Link href='/rooms/kitchen'> KITCHEN </Link> </li>
-                <li> <Link href='/rooms/livingRoom'> LIVING ROOM </Link> </li>
-                <li> <Link href='/rooms/bedroom'> BEDROOM </Link> </li> 
+            <li className='relative text-lg pr-4 pl-8 xl:pl-4 border-r'>
+              <button onClick={handleNavbarRooms} className='text-lg flex gap-2 items-center'> <FaArrowDownShortWide /> ROOMS </button>
+              {navbarRooms &&
+              <div className='h-16 w-96 absolute top-8 rounded-lg text-center bg-base-color-2'>
+                <li className='h-full inline-flex justify-center items-center mr-1'> <Link className='border-r-2 border-primary-color-1 pr-1' href='/rooms/kitchen'> KITCHEN </Link> </li>
+                <li className='h-full inline-flex justify-center items-center mr-1'> <Link className='border-r-2 border-primary-color-1 pr-1' href='/rooms/livingRoom'> LIVING ROOM </Link> </li>
+                <li className='h-full inline-flex justify-center items-center'> <Link href='/rooms/bedroom'> BEDROOM </Link> </li> 
               </div>      
               }            
             </li>

@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         'homepage_background': "url('/images/background.jpg')",
+        'tractor': "url('/images/tractor.svg)"
       },   
       colors: {
         "action-color": "#00DFDC",

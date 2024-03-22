@@ -16,11 +16,14 @@ export default function RootLayout({
 
   const nav = useStore((state) => state.nav)
   const setNav = useStore((state: any) => state.updateNav)
+  const navbarRooms = useStore((state) => state.navbarRooms)
+  const setNavbarRooms = useStore((state: any) => state.updateNavbarRooms)
   const [isWindowLarge, setIsWindowLarge] = useState(false)
   const pathname = usePathname();
 
   useEffect(() => {
     setNav(false)
+    setNavbarRooms(false)
   }, [pathname])
 
   useEffect(() => {

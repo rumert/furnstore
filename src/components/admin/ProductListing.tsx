@@ -51,7 +51,6 @@ export default function ProductListing (  { room, products } : any) {
         } catch (err) {
             setFormFields( (prevData: any) => ({ ...prevData, error: 'an error occured, please try again' }) )
         }       
-
     }
 
     return (
