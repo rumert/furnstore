@@ -4,9 +4,9 @@ import { doc, getDoc } from "firebase/firestore";
 
 export default async function Background({ room }: any) {
 
-  const docRef = doc(db, "products",  "4381VtlCGuvDIqoGZHMc")
-  const docSnap: any = await getDoc(docRef)
-  const background = docSnap.data().background_links[room]
+  const docRef: any = doc(db, "products",  "background_links")
+  const backgroundDoc: any = await getDoc(docRef)
+  const background = backgroundDoc.data()[room]
   const roomHeader = (room == 'livingRoom') ? 'LIVING ROOM' : room
 
   return (

@@ -1,11 +1,12 @@
 import { db } from "../../../lib/firebase/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 
 export default async function GetProducts( room: any ) {
   
   try {
-    const colRef = collection(db, "products", "4381VtlCGuvDIqoGZHMc", room)
-    const snap = await getDocs(colRef)
+    const colRef = collection(db, "products")
+    const q = query(colRef, where("room", "==", room))
+    const snap = await getDocs(q)
     let data: any = []
     snap.forEach((doc) => {
       data.push( doc.data() )

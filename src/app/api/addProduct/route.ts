@@ -13,7 +13,7 @@ export async function POST(req: Request) {
               room = data.get('room'),
               file = data.get('file');
 
-        const docRef = await addDoc(collection(db, "products", "4381VtlCGuvDIqoGZHMc", room), {
+        const docRef = await addDoc(collection(db, "products"), {
             name,
             price,
             width,

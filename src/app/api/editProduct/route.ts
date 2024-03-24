@@ -1,4 +1,4 @@
-import { deleteObject, getBytes, getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { deleteObject, getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { db, storage } from "../../../../lib/firebase/firebase";
 import { deleteDoc, doc, getDoc, setDoc, updateDoc } from "firebase/firestore"; 
 
@@ -14,7 +14,7 @@ export async function POST(req: Request) {
               file = data.get('file'),
               id = data.get('id'),
               newRoom = data.get('newRoom'),
-              docRef = doc(db, "products", "4381VtlCGuvDIqoGZHMc", room, id);
+              docRef = doc(db, "products", id);
         
         if (name) {
             await updateDoc(docRef, { name: name })
@@ -36,7 +36,7 @@ export async function POST(req: Request) {
             await deleteObject(oldImageRef)
             const newUrl = await getDownloadURL(newImageRef)
             const oldDocSnap = await getDoc(docRef)
-            const newDocRef = doc(db, "products", "4381VtlCGuvDIqoGZHMc", newRoom, id)
+            const newDocRef = doc(db, "products", id)
             await setDoc(newDocRef, {...oldDocSnap.data(), room: newRoom, url: newUrl})
             await deleteDoc(docRef)
         }
