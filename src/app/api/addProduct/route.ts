@@ -11,7 +11,9 @@ export async function POST(req: Request) {
               width = data.get('width'),
               height = data.get('height'),
               room = data.get('room'),
-              file = data.get('file');
+              file = data.get('file'),
+              category = data.get('category'),
+              description = data.get('description');
 
         const docRef = await addDoc(collection(db, "products"), {
             name,
@@ -19,6 +21,8 @@ export async function POST(req: Request) {
             width,
             height,
             room,
+            category,
+            description,
             createdAt: serverTimestamp()
         })
 

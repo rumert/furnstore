@@ -58,14 +58,12 @@ export default async function Product({ params }: any) {
             </div>
           </div>
           
-          <div className='flex justify-center items-center gap-2'>
-            <label className='text-2xl' htmlFor='warranty'>Warranty:</label>
-            <select name="warranty" id="warranty" className='text-xl'>
-              <option value="1">1 Year Warranty</option>
-              <option value="2">2 Year Warranty</option>
-              <option value="3">3 Year Warranty</option>
-            </select>
-          </div>
+          <select name="warranty" id="warranty" className='my-auto h-2/3 text-xl'>
+            <option value="" disabled selected >Warranty</option>
+            <option value="1">1 Year Warranty (+10$)</option>
+            <option value="2">2 Year Warranty (+20$)</option>
+            <option value="3">3 Year Warranty (+30$)</option>
+          </select>
 
         </div>
         <hr className='border-base-color-2'/>
@@ -86,8 +84,8 @@ export default async function Product({ params }: any) {
         <hr className='border-base-color-2'/>
 
         <div>
-          <h2 className='text-3xl'>Description</h2>
-          <p className='text-lg'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut ab fugiat doloribus recusandae libero magnam repellat aliquid, sunt molestiae! Rerum perferendis laudantium totam omnis porro tempore ea rem! Quasi, repellat!</p>
+          <h2 className='text-3xl text-white'>Description</h2>
+          <p className='text-lg'>{product.description}</p>
         </div>
       </div>
     </div>

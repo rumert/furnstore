@@ -84,11 +84,29 @@ export default function AddProduct() {
       required
       /> 
 
-      <label className='text-white mb-1' htmlFor="room">Which page:</label>
-      <select name="room" id="room" className='mb-4'>
+      <textarea 
+      name="description" 
+      id="description" 
+      cols={1} 
+      rows={1}
+      placeholder='Description'
+      className='h-20 w-[50%] mb-4 border-2 px-4 rounded-2xl'
+      />
+
+      <select name="room" id="room" className='mb-4' required>
+        <option value="" selected disabled >Select a Room</option>
         <option value="kitchen">Kitchen</option>
         <option value="bedroom">Bedroom</option>
         <option value="livingRoom">Living Room</option>
+      </select>
+
+      <select name="category" id="category" className='mb-4' required>
+        <option value="" selected disabled >Select a Category</option>
+        <option value="chair">Chair</option>
+        <option value="accentChair">Accent Chair</option>
+        <option value="sofa">Sofa</option>
+        <option value="dresser">Dresser</option>
+        <option value="wardrobe">Wardrobe</option>
       </select>
 
       <label htmlFor="file" className='text-white'>Product Image</label>

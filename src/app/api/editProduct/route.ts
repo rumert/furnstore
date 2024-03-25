@@ -14,6 +14,7 @@ export async function POST(req: Request) {
               file = data.get('file'),
               id = data.get('id'),
               newRoom = data.get('newRoom'),
+              description = data.get('description'),
               docRef = doc(db, "products", id);
         
         if (name) {
@@ -30,8 +31,7 @@ export async function POST(req: Request) {
             const oldImageRef = ref(storage, `images/${room}/${id}`)
             const newImageRef = ref(storage, `images/${newRoom}/${id}`)
             const oldUrl = await getDownloadURL(oldImageRef)
-            const res = await fetch(oldUrl)
-            const blob = await res.blob()
+            const blob = await (await fetch(oldUrl)).blob()
             await uploadBytes(newImageRef, blob)      
             await deleteObject(oldImageRef)
             const newUrl = await getDownloadURL(newImageRef)
@@ -39,6 +39,8 @@ export async function POST(req: Request) {
             const newDocRef = doc(db, "products", id)
             await setDoc(newDocRef, {...oldDocSnap.data(), room: newRoom, url: newUrl})
             await deleteDoc(docRef)
+        } else if (description) {
+            await updateDoc(docRef, { description })
         }
 
         return Response.json('OK')
