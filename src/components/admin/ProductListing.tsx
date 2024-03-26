@@ -1,6 +1,5 @@
 'use client'
 import Image from "next/image"
-import { useRouter } from "next/navigation";
 import { useState } from "react"
 import { FaArrowRight } from "react-icons/fa6";
 import { FaArrowDown } from "react-icons/fa6";
@@ -12,15 +11,17 @@ export default function ProductListing (  { room, products } : any) {
     const [isImageFormActive, setIsImageFormActive]: any = useState({})
     const [isNameFieldActive, setIsNameFieldActive]: any = useState({})
     const [isPriceFieldActive, setIsPriceFieldActive]: any = useState({})
-    const [formFields, setFormFields]: any = useState({      
-        name: '',
-        price: '',      
-        width: '',
-        height: '',
-        room: ''
-      })
+    const fieldsArr = Array.from({ length: products.length }, () => '')
+    const formFieldsProvider = {      
+        name: fieldsArr,
+        price: fieldsArr,      
+        width: fieldsArr,
+        height: fieldsArr,
+        room: '',
+        error: ''
+    }
+    const [formFields, setFormFields]: any = useState(formFieldsProvider)
     const [loading, setLoading] = useState(false)
-    const router = useRouter()
 
     function handleMenu() {
         setIsHidden(!isHidden)
@@ -43,7 +44,7 @@ export default function ProductListing (  { room, products } : any) {
             setLoading(false)
 
             if (res.ok) {
-                router.refresh()
+                setFormFields(formFieldsProvider)
             } else {
                 setFormFields( (prevData: any) => ({ ...prevData, error: res }) )
             }
@@ -51,6 +52,14 @@ export default function ProductListing (  { room, products } : any) {
         } catch (err) {
             setFormFields( (prevData: any) => ({ ...prevData, error: 'an error occured, please try again' }) )
         }       
+    }
+
+    function handleFormFields(e: any, index: any, field: any) {
+        setFormFields((prevData: any) => {
+            const newArr = [...formFields[field]]; 
+            newArr[index] = e.target.value; 
+            return { ...prevData, [field]: newArr}
+        })
     }
 
     return (
@@ -82,8 +91,8 @@ export default function ProductListing (  { room, products } : any) {
                         type="number" 
                         className='h-full w-[5vw] border rounded-md text-xs text-black'
                         name='width'
-                        value={formFields.width}
-                        onChange={e => setFormFields( (prevData: any) => ({ ...prevData, width: e.target.value }) )}
+                        value={formFields.width[index]}
+                        onChange={e => handleFormFields(e, index, 'width')}
                         placeholder={'W: '+ product.width}
                         required
                         /> 
@@ -92,8 +101,8 @@ export default function ProductListing (  { room, products } : any) {
                         type="number" 
                         className='h-full w-[5vw] border rounded-md text-xs text-black'
                         name='height'
-                        value={formFields.height}
-                        onChange={e => setFormFields( (prevData: any) => ({ ...prevData, height: e.target.value }) )}
+                        value={formFields.height[index]}
+                        onChange={e => handleFormFields(e, index, 'height')}
                         placeholder={'H: '+ product.height}
                         required
                         /> 
@@ -123,8 +132,8 @@ export default function ProductListing (  { room, products } : any) {
                         className="text-base h-8 w-40 mr-2 text-black" 
                         placeholder={product.name}
                         name='name'
-                        value={formFields.name}
-                        onChange={e => setFormFields( (prevData: any) => ({ ...prevData, name: e.target.value }) )}
+                        value={formFields.name[index]}
+                        onChange={e => handleFormFields(e, index, 'name')}
                         required
                         />
                         {loading ? 
@@ -149,8 +158,8 @@ export default function ProductListing (  { room, products } : any) {
                         className="text-base h-8 w-40 mr-2 text-black" 
                         placeholder={product.price} 
                         name='price'
-                        value={formFields.price}
-                        onChange={e => setFormFields( (prevData: any) => ({ ...prevData, price: e.target.value }) )}
+                        value={formFields.price[index]}
+                        onChange={e => handleFormFields(e, index, 'price')}
                         required
                         />
                         {loading ? 
@@ -171,10 +180,10 @@ export default function ProductListing (  { room, products } : any) {
                             
                     <form className='text-center flex justify-center items-center gap-2' encType="multipart/form-data" onSubmit={(e) => handleProduct(e, product.id)}>
                         <label className='text-2xl' htmlFor="room">Room:</label>
-                        <select name="newRoom" id="room" className='text-base h-8 w-40 mr-2 text-black'>
-                            <option selected={room == "Kitchen"} value="kitchen">Kitchen</option>
-                            <option selected={room == "Bedroom"} value="bedroom">Bedroom</option>
-                            <option selected={room == "Living Room"} value="livingRoom">Living Room</option>
+                        <select defaultValue={room} name="newRoom" id="room" className='text-base h-8 w-40 mr-2 text-black'>
+                            <option value="kitchen">Kitchen</option>
+                            <option value="bedroom">Bedroom</option>
+                            <option value="livingRoom">Living Room</option>
                         </select>
                         {loading ? 
                         <button disabled type="button" className="h-full w-[5vw] rounded-md bg-action-color text-base hover:opacity-80 flex items-center justify-center">
